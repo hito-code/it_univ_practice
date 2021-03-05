@@ -1,0 +1,560 @@
+/******************************************************************
+
+Stylesheet: ベーススタイル
+
+******************************************************************/
+body {
+  font-family: "Kameron", "Noto Sans JP", sans-serif;
+}
+
+li {
+  list-style: none;
+}
+img {
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+.back-img {
+  width: 100%;
+  padding-top: 70px;
+  object-fit: cover;
+  height: 500px;
+}
+
+.main-head {
+  font-family: 'Noto Serif JP', serif;
+  @extend .font-lg;
+  @extend .mb-sm;
+  font-weight: 500;
+  color: rgb(0, 225, 255);
+}
+.sub-head {
+  font-family: 'Noto Serif JP', serif;
+  @extend .font-sm;
+  font-weight: 300;
+  margin-top: 20px;
+  
+}
+
+.font-sm {
+  font-size: 14px;
+}
+.font-md {
+  font-size: 17px;
+}
+.font-lr {
+  font-size: 17px;
+}
+.font-lg {
+  font-size: 25px;
+}
+.mb-sm {
+  margin-bottom: 16px !important;
+}
+.mb-lg {
+  margin-bottom: 80px !important;
+}
+.pb-sm {
+  padding-bottom: 16px !important;
+}
+.pb-lg {
+  padding-bottom: 80px !important;
+}
+.content-width {
+  width: 90%;
+  margin: 0 auto;
+  max-width: $contentMaxWidth;
+}
+.main-title {
+  @extend .font-lg;
+  font-weight: 600;
+  margin-bottom: 20;
+  display: block;
+  text-align: center;
+}
+.sub-title {
+  @extend .font-sm;
+  color: $cSubTitle;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+}
+.purple {
+  color: $cWineRed;
+}
+
+#main-content {
+  position: relative;
+  z-index: 0;
+}
+
+main {
+  position: relative;
+  z-index: -1;
+}
+
+#container {
+  background-color: $cWhite;
+  position: relative;
+  z-index: 10;
+  transition: transform 0.5s, box-shadow 0.5s;
+}
+
+.pc { display: none !important; }
+.sp { display: block !important; }
+.hero__footer { display: none !important; }
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $navHeight;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  z-index: 100;
+
+  &.triggered {
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 10px 0 25px -10px rgba(0, 0, 0, 0.5);
+  }
+
+  &__nav {
+    display: none;
+  }
+
+  &__ul {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  &__li {
+    margin-left: 20px;
+
+    & > a {
+      color: $cBlack;
+      text-decoration: none !important;
+      text-transform: uppercase;
+    }
+  }
+
+  & .logo {
+    font-size: 38px;
+    justify-content: center;
+  }
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @extend .content-width;
+  }
+}
+
+.travel {
+  @extend .mb-lg;
+  // @extend .content-width;
+
+  &__inner {
+    @extend .flex;
+    justify-content: center;
+    padding: 15px;
+    position: relative;
+    z-index: 0;
+  }
+
+
+  &__sub {
+    @extend .mb-sm;
+  }
+
+  &__img {
+    height: 200px;
+    @extend .mb-sm;    
+    & > img {
+      z-index: -1;
+      object-fit: contain;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__texts {
+    @extend .pb-sm;
+
+    &.inview {
+      & .travel__title::before {
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  &__texts-inner {
+    text-align: center;
+  }
+}
+
+.service {
+  @extend .mb-lg;
+
+  &__title {
+    text-align: center;
+    @extend .mb-sm;
+  }
+
+  &__title2 {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 20;
+    font-size: 30px;
+    font-weight: 500;
+    transform: translate(-50px,50px);
+}
+
+  &__text{
+    @extend .font-sm;
+    z-index: 30;
+    position: relative;
+  }
+  
+  &__main {
+      position: relative;
+      @include p-base($top: 30%, $height: 70%) {
+        background: rgba(194, 236, 238,0.7);
+      }
+      &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 70%;
+        background-color:rgba(194, 236, 238,0.7);
+      }
+  }
+
+  &__container {
+    @extend .flex;
+    @extend .content-width;
+  }
+
+  &__cover {
+    @extend .mb-sm;
+    position: relative;
+    z-index: 0; 
+   
+    &__btn {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      background-color: transparent;
+    }
+  
+  }
+}
+
+.gry {
+  @extend .mb-sm;
+  position: relative;
+  @include p-base($top: 50%, $height: 70%) {
+    background: rgba(194, 236, 238,0.7);
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70%;
+    background-color:rgba(194, 236, 238,0.7);
+  }
+
+  &__btn {
+    text-align: center;
+    flex-basis: 100%;
+    position: relative;
+    z-index: 10;
+    margin-top: 30px;
+    
+  }
+}
+
+.swiper-cover {
+  @extend .content-width;
+}
+
+
+
+.houses {
+  @extend .content-width;
+  @extend .mb-lg;
+
+  &__inner {
+    @extend .flex;
+  }
+
+  &__title {
+    @extend .font-lr;
+    @extend .mb-sm;
+  }
+
+  &__btn {
+    text-align: center;
+    flex-basis: 100%;
+  }
+}
+
+.popular {
+  &__inner {
+    position: relative;
+    @include p-base($top: 10%, $height: 90%) {
+      background: $cBgGray;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 90%;
+      background-color: $cBgGray;
+    }
+  }
+  &__header {
+    @extend .content-width;
+  }
+  &__container {
+    position: relative;
+    z-index: 2;
+    @extend .flex;
+    @extend .content-width;
+    @extend .pb-sm;
+  }
+
+  &__title {
+    @extend .font-md;
+    @extend .mb-sm;
+  }
+
+  &__btn {
+    text-align: center;
+    flex-basis: 100%;
+    @extend .mb-lg;
+  }
+
+  &__img {
+    height: 150px;
+    overflow: hidden;
+    margin-bottom: 5px;
+
+    & > img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+.logo {
+  font-size: 42px;
+  display: flex;
+
+  &__img {
+    width: 0.8em;
+    height: 0.8em;
+    margin-top: 11px;
+    margin-right: 3px;
+  }
+
+  &__world {
+    color: rgb(0, 225, 255);
+  }
+}
+
+.exp {
+  font-size:16px;
+  display: flex;
+}
+
+.footer {
+  padding: 60px 0;
+  @extend .content-width;
+
+  &__nav {
+    @extend .flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+  }
+
+  &__ul {
+    @extend .flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  &__li {
+    padding: 0;
+    margin: 10px;
+
+    & > a {
+      color: $cSubTitle;
+    }
+  }
+
+  & .logo {
+    font-size: 38px;
+    justify-content: center;
+  }
+}
+
+.side {
+  display: none;
+  position: fixed;
+  top: 70%;
+  transform: translateY(-50%);
+  transition: all .3s ease-in;
+
+  & .tween-animate-title {
+    color: $cBlack;
+    text-decoration: none !important;
+    margin: 0 40px;
+    vertical-align: middle;
+    letter-spacing: 2px;
+  }
+
+  &.left {
+    left: -50px;
+
+    &.inview {
+      left: 50px;
+    }
+
+    & .side__inner {
+      transform-origin: top left;
+      transform: rotate(-90deg);
+    }
+  }
+  &.right {
+    right: -50px;
+
+    &.inview {
+      right: 50px;
+    }
+
+    & .side__inner {
+      transform-origin: top right;
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.icon {
+  position: relative;
+
+  @include p-base($left: -20px, $top: 50%, $width: 1em, $height: 1em) {
+    transform: translateY(-50%);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  &.twitter{
+    &::before {
+      background-image: url(../images/twitter.svg);
+    }
+  }
+  &.fb{
+    &::before {
+      background-image: url(../images/facebook.svg);
+    }
+  }
+}
+
+.older {
+  @extend .mb-lg;
+  padding-top: 150px;
+  text-align: center;
+  &-title {
+    font-family: 'Noto Serif JP', serif;
+    @extend .font-sm;
+    margin-bottom: 100px;
+    font-weight: 500;
+
+  }
+  &-content {
+    @extend .flex;
+   
+  }
+  &-item {
+    @extend .mb-lg;
+  }
+
+
+}
+
+.older-flow {
+  @extend .mb-lg;
+  text-align: center;
+
+  &__ul {
+    @extend .content-width;
+    padding: 0;
+
+    & > li {
+      &:last-of-type::after{
+        content: none;
+     }
+   }
+  }
+
+  &__head {
+    @extend .font-lr;
+  }
+
+  &__li {
+    margin-bottom: 50px;
+    display: flex;
+    max-width: 100%;
+    width: 100%;
+    position: relative;
+ 
+      &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 0;
+      height: 0;
+      border-top: 3.1vw solid rgb(0, 225, 255);
+      border-left: 2.6vw solid transparent;
+      border-right: 2.6vw solid transparent;
+      left: 30vw;
+      bottom: 0;
+
+    }
+  }
+  
+  &__img {
+    object-fit: cover;
+    flex-basis: 40%;
+    margin-right: 15px;
+  }
+  &__text {
+    flex-basis: 50%;
+    text-align: left;
+    padding-bottom: 25px;
+  }
+}
